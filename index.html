@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+<meta http-equiv="Content-Security-Policy" content="__CSP__">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f6f3">
+<title>Private Chat</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+
+<main id="gate" hidden>
+  <form id="gateForm" autocomplete="off">
+    <h1>Private Chat</h1>
+    <p class="muted">Private 1-to-1 communication</p>
+    <label for="code">Enter your chat code</label>
+    <input id="code" name="code" required autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="Access code">
+    <fieldset>
+      <legend>Who are you?</legend>
+      <label class="pick"><input type="radio" name="who" value="a" required><span>Person A</span></label>
+      <label class="pick"><input type="radio" name="who" value="b"><span>Person B</span></label>
+    </fieldset>
+    <button id="enter" type="submit">Enter chat</button>
+    <p id="gateErr" class="err" role="alert"></p>
+  </form>
+</main>
+
+<div id="chat" hidden>
+  <header>
+    <h1>Private Chat</h1>
+    <span id="status" class="status" role="status">Connecting…</span>
+    <button id="menuBtn" class="icon" type="button" aria-label="Menu" aria-expanded="false">⋮</button>
+    <div id="menu" class="pop" hidden>
+      <p id="menuStatus" class="muted"></p>
+      <button id="clearBtn" type="button">Clear local session</button>
+      <button id="leaveBtn" type="button" class="danger">Leave chat</button>
+    </div>
+  </header>
+  <div id="list">
+    <button id="older" type="button" hidden>Load older messages</button>
+    <div id="msgs" aria-live="polite"></div>
+  </div>
+  <p id="note" class="note" role="status" hidden></p>
+  <form id="composer">
+    <button id="plus" class="icon" type="button" aria-label="Attach" aria-expanded="false">+</button>
+    <div id="plusMenu" class="pop" hidden><button id="photoBtn" type="button">Photo</button></div>
+    <input id="file" type="file" accept="image/*" hidden>
+    <textarea id="input" rows="1" maxlength="4000" enterkeyhint="send" placeholder="Type a message…" aria-label="Message"></textarea>
+    <button id="send" class="icon" type="submit" aria-label="Send">↑</button>
+  </form>
+</div>
+
+<div id="viewer" hidden>
+  <img id="vImg" alt="Photo">
+  <p id="vMsg"></p>
+</div>
+
+</body>
+</html>
