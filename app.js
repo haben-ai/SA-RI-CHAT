@@ -680,7 +680,7 @@
     const who = (document.querySelector('input[name=who]:checked') || {}).value;
     const err = (t) => { $('gateErr').textContent = t; };
     if (!code) return err('Please enter the access code.');
-    if (!who) return err('Please choose Person A or Person B.');
+    if (!who) return err('Please choose who you are.');
     const btn = $('enter');
     btn.disabled = true;
     btn.textContent = 'Checking…';
